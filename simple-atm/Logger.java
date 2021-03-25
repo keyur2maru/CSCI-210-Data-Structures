@@ -1,29 +1,33 @@
-import java.io.*;
 import java.util.ArrayList;
+import java.io.*;
 
-public class Logger {
-  public void GetLog() throws IOException {
-    
-    ArrayList <String> List = User.atmLog;
-    File file = new File("atm.log");  
-  if (!file.exists()) {
-	     file.createNewFile();
-	  }
-    
-    BufferedWriter bw = null;
-    FileWriter fw = new FileWriter(file,true);
-    
+public class Logger implements Serializable {
+  private static final long serialVersionUID = 1L;
+  public void getLog() throws IOException {
+    Logger obj = new Logger();
 
-	  bw = new BufferedWriter(fw);
-    fw.write("");
-         for (String i : List) {      
-         bw.write(i);
-         bw.append(System.lineSeparator());
-        }
-         bw.flush();
-         fw.write("\r\n");
-         bw.close();
-         fw.close();
-         System.out.println("Log saved on atm.log\n");
-  }
+    ArrayList < String > List = User.atmLog;
+    try {
+      FileOutputStream writeData = new FileOutputStream("atmoutput.log");
+      ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+
+      writeStream.writeObject(List);
+      writeStream.flush();
+      writeStream.close();
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    try {
+      FileInputStream readData = new FileInputStream("atmoutput.log");
+      ObjectInputStream readStream = new ObjectInputStream(readData);
+
+      ArrayList List1 = (ArrayList < ? > ) readStream.readObject();
+      readStream.close();
+
+    } catch (IOException | ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+  } 
 }

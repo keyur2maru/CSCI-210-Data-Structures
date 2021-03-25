@@ -21,11 +21,11 @@ class ATM {
     cashDispenser = new CashDispenser();
     cashDispenser.init();
   }
-  
+
   public void run() {
-  User user = new User(lcd,cardReader,keypad,cashDispenser);
-  while (true) {
-    user.io();
-  } 
+    User user = new User(lcd, cardReader, keypad, cashDispenser);
+    while (true) {
+      user.io();
+    }
   }
 }

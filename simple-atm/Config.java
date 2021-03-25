@@ -3,10 +3,10 @@ import java.nio.file.*;
 import java.io.IOException;
 
 public class Config {
-  public static Map<String, String> map = new java.util.HashMap<>();
+  public static Map < String, String > map = new java.util.HashMap < > ();
 
- public void init() {
-            try {
+  public void init() {
+    try {
       List < String > xml = Files.readAllLines(Paths.get("atm.xml"));
       System.out.println(xml);
       parse(xml);
@@ -14,16 +14,16 @@ public class Config {
       System.out.println(e);
       return;
     }
- }
-  
-    private static XmlElement[] xml_elements = {
+  }
+
+  private static XmlElement[] xml_elements = {
     new XmlElement("<config>", "</config>", Tag.ConfigStart, Tag.ConfigEnd),
     new XmlElement("<title>", "</title>", Tag.TitleStart, Tag.TitleEnd),
     new XmlElement("<copyright>", "</copyright>", Tag.CopyrightStart, Tag.CopyrightEnd),
     new XmlElement("<developer>", "</developer>", Tag.DeveloperStart, Tag.DeveloperEnd),
-    };
+  };
 
-    private static void parse(List < String > xml) {
+  private static void parse(List < String > xml) {
     Stack < Tag > stack = new Stack < Tag > ();
 
     //Parse each item in the xml
@@ -50,10 +50,8 @@ public class Config {
     } else {
       System.out.println("XML Not Valid");
     }
-  map.put("<copyright>" , xml.get(5));
-  map.put("<title>" , xml.get(2));
-  map.put("<developer>" , xml.get(8));
+    map.put("<copyright>", xml.get(5));
+    map.put("<title>", xml.get(2));
+    map.put("<developer>", xml.get(8));
   }
 }
-
- 

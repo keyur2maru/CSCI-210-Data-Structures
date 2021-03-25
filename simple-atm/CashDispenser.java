@@ -28,9 +28,9 @@ class CashDispenser {
 
   public String num20s() {
     return "$20 Bills: " + num20s;
-      }
+  }
 
   public String num10s() {
     return "$10 Bills: " + num10s;
   }
-  }
+}
