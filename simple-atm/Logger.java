@@ -8,7 +8,7 @@ public class Logger implements Serializable {
 
     ArrayList < String > List = User.atmLog;
     try {
-      FileOutputStream writeData = new FileOutputStream("atmoutput.log");
+      FileOutputStream writeData = new FileOutputStream("atm.log");
       ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
       writeStream.writeObject(List);
@@ -16,17 +16,6 @@ public class Logger implements Serializable {
       writeStream.close();
 
     } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    try {
-      FileInputStream readData = new FileInputStream("atmoutput.log");
-      ObjectInputStream readStream = new ObjectInputStream(readData);
-
-      ArrayList List1 = (ArrayList < ? > ) readStream.readObject();
-      readStream.close();
-
-    } catch (IOException | ClassNotFoundException e) {
       e.printStackTrace();
     }
   } 
