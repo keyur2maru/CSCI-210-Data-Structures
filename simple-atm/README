@@ -1,0 +1,15 @@
+CSCI 210 - Data Structures
+Palomar College
+Spring 2021
+
+This project employ the use of key data structure skills, including:
+Java Primitive Data Types
+Java Classes
+Java File I/O (text, binary, and Object files)
+java.util.Stack
+java.util.ArrayList
+java.util.HashMap
+
+Usage :
+java Main ATM
+(default pin 12345)
